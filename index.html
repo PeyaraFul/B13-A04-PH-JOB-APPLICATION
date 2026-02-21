@@ -18,10 +18,10 @@
 </head>
 <body>
 
-    <header>
+    <header class="p-4">
         <h1 class="font-bold text-2xl my-4"> JOB APPLICATION TRACKER</h1>
-        <div class="job-dashbord grid grid-cols-3 grid-rows-1 gap-5">
-            <div class="card bg-base-100 card-xs shadow-sm p-2">
+        <div class="job-dashbord grid grid-cols-3 grid-rows-1 gap-5 p-3">
+            <div class="card bg-base-100 card-xs shadow-sm">
              
              <h3>Total</h3>
               <p class=" font-bold">8</p>
@@ -41,21 +41,26 @@
         <br>
     </header>
 
-<section class="available-job mt-5">
-    <h2 class="mb-3 font-bold  text-xl">available Job</h2>
-    <button class="btn btn-soft btn-primary">All</button>
-    <button class="btn btn-soft btn-primary">Interview</button>
-    <button class="btn btn-soft btn-primary">Rejected</button>
+<section class="available-job mt-5 p-4">
+    <h2 class="mb-3 font-bold  text-xl">Available Job</h2>
     
-        <div class="card w-[100%] bg-base-100 card-xs shadow-sm">
-        <div class="card-body">
-            <h2 class="card-title">Mobile First Corp</h2>
-            <p> react Native Developer</p>
+    
+        <div class="bg-base-100 card-xs shadow-lg p-3">
+            <button class="btn btn-soft btn-primary btn-active">All</button>
+            <button class="btn btn-soft btn-primary">Interview</button>
+            <button class="btn btn-soft btn-primary">Rejected</button>
+        <div class="card-body my-3">
+            <h2 class="card-title text-[16px]">Mobile First Corp</h2>
+            <p class="text-neutral-500 text-[14px]"> react Native Developer</p>
+
+           <div class="badge badge-soft badge-md badge-primary">NOT APPLIED</div>
+
+            <p class="text-neutral-500"> react Native Developer</p>
             <div class="">
-                <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, tempora?</p>
+                <p class="mb-2"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, tempora?</p>
             
             <button class="btn btn-outline btn-success">INTERVIEW</button>
-            <button class="btn btn-outline btn-secondary">REJECTED</button>
+            <button class="btn btn-outline btn-secondary ml-4">REJECTED</button>
             
             </div>
         </div>
