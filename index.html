@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- google font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- tailwind + daisyUI -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+     <link rel="stylesheet" href="index.css">
+    <title>PH-Job-Tracker</title>
+</head>
+<body>
+
+    <header>
+        <h1 class="font-bold text-2xl my-4"> JOB APPLICATION TRACKER</h1>
+        <div class="job-dashbord grid grid-cols-3 grid-rows-1 gap-5">
+            <div class="card bg-base-100 card-xs shadow-sm p-2">
+             
+             <h3>Total</h3>
+              <p class=" font-bold">8</p>
+        </div>
+        <div class="card bg-base-100 card-xs shadow-sm p-4">
+            <h3>Interview</h3>
+             <p class="text-green-500 font-bold">0</p>
+            
+        </div>
+        <div class="card bg-base-100 card-xs shadow-sm p-4">
+            <h3>Rejected</h3>
+              <p class="text-red-500 font-bold">0</p>
+             
+        </div>
+        </div>
+        
+        <br>
+    </header>
+
+<section class="available-job mt-5">
+    <h2 class="mb-3 font-bold  text-xl">available Job</h2>
+    <button class="btn btn-soft btn-primary">All</button>
+    <button class="btn btn-soft btn-primary">Interview</button>
+    <button class="btn btn-soft btn-primary">Rejected</button>
+    
+        <div class="card w-[100%] bg-base-100 card-xs shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title">Mobile First Corp</h2>
+            <p> react Native Developer</p>
+            <div class="">
+                <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, tempora?</p>
+            
+            <button class="btn btn-outline btn-success">INTERVIEW</button>
+            <button class="btn btn-outline btn-secondary">REJECTED</button>
+            
+            </div>
+        </div>
+        </div>
+</section>
+    
+</body>
+</html>
