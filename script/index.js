@@ -153,7 +153,7 @@ mainContent.addEventListener("click", function (event) {
  mainContent.addEventListener("click", function (event) {
  if (event.target.classList.contains("delete-btn")){
 
-    const parent = event.target.parentElement.parentElement.parentElement;
+    const parent = event.target.parentElement.parentElement;
     parent.remove();
     
    }
@@ -178,7 +178,7 @@ function createInterviewCard() {
     // console.log(everyInterviewCard);
     let div = document.createElement("div");
     div.innerHTML = `
-            <div class="mobile-first-corp card-body mb-4 shadow-sm">
+            <div class="mobile-first-corp card-body mb-4 shadow-sm relative">
             <h2 class="company-name card-title text-[16px]"> ${everyInterviewCard.companyName} </h2>
             <p class="job-position text-neutral-500 text-[14px]"> ${everyInterviewCard.jobPosition} </p>
 
@@ -189,6 +189,7 @@ function createInterviewCard() {
 
                 <button class=" interview-btn btn btn-outline btn-success">INTERVIEW</button>
                 <button class=" rejected-btn btn btn-outline btn-secondary ml-4">REJECTED</button>
+                <button class=" delete-btn btn btn-soft btn-warning text-black absolute top-6 right-4"> <i class="delete-btn fa-regular fa-trash-can pointer-events-none"></i> </button>
             </div>
         </div
         
@@ -206,7 +207,7 @@ function createRejectedCard() {
     // console.log(everyInterviewCard);
     let div = document.createElement("div");
     div.innerHTML = `
-            <div class="mobile-first-corp card-body mb-4 shadow-sm">
+            <div class="mobile-first-corp card-body mb-4 shadow-sm relative">
             <h2 class="company-name card-title text-[16px]"> ${everyRejectedCard.companyName} </h2>
             <p class="job-position text-neutral-500 text-[14px]"> ${everyRejectedCard.jobPosition} </p>
 
@@ -217,6 +218,7 @@ function createRejectedCard() {
 
                 <button class=" interview-btn btn btn-outline btn-success">INTERVIEW</button>
                 <button class=" rejected-btn btn btn-outline btn-secondary ml-4">REJECTED</button>
+                <button class=" delete-btn btn btn-soft btn-warning text-black absolute top-6 right-4"> <i class="delete-btn fa-regular fa-trash-can pointer-events-none"></i> </button>
             </div>
         </div
         
