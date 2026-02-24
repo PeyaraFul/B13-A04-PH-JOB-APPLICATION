@@ -3,6 +3,7 @@ const interviewJobElement = document.getElementById("interview-job");
 const rejectedJobElement = document.getElementById("rejected-job");
 const jobField = document.getElementById("job-field");
 const mainContent = document.getElementById('main-content') ;
+const noAvailableJobCardForRejected = document.getElementById('no-available-job-card-for-rejected')
 
 const interviewJobHeading = document.getElementById('interview-job-heading')
 const rejectedJobHeading = document.getElementById('rejected-job-heading')
@@ -44,7 +45,7 @@ calculate();
 function toggleBtn(id, section, jobHeading) {
 
   
-
+  // job count remove in the heading 
   interviewJobHeading.classList.add('hidden');
   rejectedJobHeading.classList.add('hidden');
 
@@ -67,11 +68,14 @@ function toggleBtn(id, section, jobHeading) {
   const selectedSection = document.getElementById(section);
   selectedSection.classList.remove("hidden");
 
+  // job count showing in the  heading
 if(jobHeading){
   const selectiveJobNumber = document.getElementById(jobHeading) ;
   selectiveJobNumber.classList.remove('hidden') ;
 }
+// calculate();
 }
+// toggleBtn();
 
 
 
@@ -188,8 +192,23 @@ else if (event.target.classList.contains("delete-btn")) {
 
 
 
+
+
 function createInterviewCard() {
+
   interviewSection.innerHTML = "";
+
+   if (interviewJob.length === 0) {
+    interviewSection.innerHTML = `
+      <div id="no-available-job-card-for-rejected" class="bg-base-100 card-xs mt-4 shadow-md mb-5 flex flex-col justify-center items-center p-6">
+            <img src="./jobs.png" alt="document-logo">
+            <h3 class="font-semibold text-[18px]">No job available</h3>
+            <p>Check back soon for new job opportunities</p>
+
+        </div>
+    `;
+    return;
+  }
 
   for (const everyInterviewCard of interviewJob) {
 
@@ -215,11 +234,27 @@ function createInterviewCard() {
     
     interviewSection.appendChild(div);
   }
+
+
 }
+
+
 
 
 function createRejectedCard() {
   rejectedSection.innerHTML = "";
+
+  if (rejectedJob.length === 0) {
+    rejectedSection.innerHTML = `
+      <div id="no-available-job-card-for-rejected" class="bg-base-100 card-xs mt-4 shadow-md mb-5 flex flex-col justify-center items-center p-6">
+            <img src="./jobs.png" alt="document-logo">
+            <h3 class="font-semibold text-[18px]">No job available</h3>
+            <p>Check back soon for new job opportunities</p>
+
+        </div>
+    `;
+    return;
+  }
 
   for (const everyRejectedCard of rejectedJob) {
 
