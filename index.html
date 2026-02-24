@@ -40,13 +40,16 @@
         </div>
         
         <div class="">
-            <h2 class="font-bold mt-2 flex  justify-between items-center bg-gray-100 text-xl">Available Job <span class="text-sm px-4 font-normal"><span class="total-jobs">  </span> jobs </span> </h2>
+            <h2 class="font-bold mt-2 flex  justify-between items-center bg-gray-100 text-xl">Available Job <span class="text-sm px-4 font-normal">
+                <span id="interview-job-heading" class="hidden"> of </span>
+                <span id="rejected-job-heading" class="hidden"> of </span>
+                <span class="total-jobs"> <!-- total job quantity --> </span> jobs </span> </h2>
             
             <!-- toggle button  -->
             <div id="toggle-btn" class="bg-base-100 rounded-sm card-xs shadow-md p-3">
                 <button  id="all-btn" onclick="toggleBtn('all-btn', 'all-job-section')" class="toggle-btn btn btn-soft btn-primary btn-active">All</button>
-                <button  id="interview-btn" onclick="toggleBtn('interview-btn','interview-section')" class=" toggle-btn interview btn btn-soft btn-primary">Interview</button>
-                <button  id="rejected-btn" onclick="toggleBtn('rejected-btn', 'rejected-section')" class="toggle-btn btn btn-soft btn-primary">Rejected</button>
+                <button  id="interview-btn" onclick="toggleBtn('interview-btn','interview-section', 'interview-job-heading')" class=" toggle-btn interview btn btn-soft btn-primary">Interview</button>
+                <button  id="rejected-btn" onclick="toggleBtn('rejected-btn', 'rejected-section', 'rejected-job-heading')" class="toggle-btn btn btn-soft btn-primary">Rejected</button>
              </div>
         </div>
     

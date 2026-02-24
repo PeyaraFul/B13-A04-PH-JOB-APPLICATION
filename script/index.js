@@ -4,15 +4,19 @@ const rejectedJobElement = document.getElementById("rejected-job");
 const jobField = document.getElementById("job-field");
 const mainContent = document.getElementById('main-content') ;
 
+const interviewJobHeading = document.getElementById('interview-job-heading')
+const rejectedJobHeading = document.getElementById('rejected-job-heading')
+
+
 let interviewJob = [];
 let rejectedJob = [];
-let toggleButton = ' all'
+
 
 // all section
 const interviewSection = document.getElementById("interview-section");
 const rejectedSection = document.getElementById("rejected-section");
 const allJobSection = document.getElementById("all-job-section");
-// console.log(allJobSection)
+
 
 // all toggle button
 const allBtn = document.getElementById("all-btn");
@@ -26,7 +30,9 @@ function calculate() {
   totalJobElement[1].innerText = totalJob;
   interviewJobElement.innerText = interviewJob.length;
   rejectedJobElement.innerText = rejectedJob.length;
-  // console.log(typeof totalJob)
+  interviewJobHeading.innerText = interviewJob.length + ' of';
+  rejectedJobHeading.innerText = rejectedJob.length + ' of';
+  
 }
 calculate();
 
@@ -35,9 +41,12 @@ calculate();
 
 
 // section hiding function
-function toggleBtn(id, section) {
+function toggleBtn(id, section, jobHeading) {
 
-  toggleButton = id ;
+  
+
+  interviewJobHeading.classList.add('hidden');
+  rejectedJobHeading.classList.add('hidden');
 
   // first removing all active- btn
   allBtn.classList.remove("btn-active");
@@ -52,11 +61,16 @@ function toggleBtn(id, section) {
   // third declare the selective button
   const selectedBtn = document.getElementById(id);
   selectedBtn.classList.add("btn-active");
-  console.log(section);
+  
 
   // finally removing 'hidden' from selective section
   const selectedSection = document.getElementById(section);
   selectedSection.classList.remove("hidden");
+
+if(jobHeading){
+  const selectiveJobNumber = document.getElementById(jobHeading) ;
+  selectiveJobNumber.classList.remove('hidden') ;
+}
 }
 
 
@@ -139,7 +153,7 @@ mainContent.addEventListener("click", function (event) {
    
     }
           
-    interviewJob = interviewJob.filter(item => item.companyName != jobCardInfo.companyName) ;
+    interviewJob = interviewJob.filter(item => item.companyName !== jobCardInfo.companyName) ;
     
       createRejectedCard() ;
       createInterviewCard() ;
@@ -150,32 +164,36 @@ mainContent.addEventListener("click", function (event) {
   }
 
 // deleting job 
- mainContent.addEventListener("click", function (event) {
- if (event.target.classList.contains("delete-btn")){
+else if (event.target.classList.contains("delete-btn")) {
 
-    const parent = event.target.parentElement.parentElement;
-    parent.remove();
-    
-   }
-   calculate();
+  const cardInfo = event.target.parentElement.parentElement;
+  const companyName = cardInfo.querySelector(".company-name").innerText;
 
+// deleting from interview section
+  interviewJob = interviewJob.filter(item => item.companyName !== companyName); 
 
-  }) ;
+  //deleting form rejected section
+  rejectedJob = rejectedJob.filter(item => item.companyName !== companyName);
 
+  cardInfo.remove();
 
+  createInterviewCard();
+  createRejectedCard();
+  calculate();
 }
 
 
+});
 
 
 
-);
 
 function createInterviewCard() {
   interviewSection.innerHTML = "";
 
   for (const everyInterviewCard of interviewJob) {
-    // console.log(everyInterviewCard);
+
+  
     let div = document.createElement("div");
     div.innerHTML = `
             <div class="mobile-first-corp card-body mb-4 shadow-sm relative">
@@ -204,7 +222,8 @@ function createRejectedCard() {
   rejectedSection.innerHTML = "";
 
   for (const everyRejectedCard of rejectedJob) {
-    // console.log(everyInterviewCard);
+
+    
     let div = document.createElement("div");
     div.innerHTML = `
             <div class="mobile-first-corp card-body mb-4 shadow-sm relative">
