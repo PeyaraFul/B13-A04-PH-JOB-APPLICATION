@@ -1,23 +1,20 @@
+// assignment to all const variable
 const totalJobElement = document.querySelectorAll(".total-jobs");
 const interviewJobElement = document.getElementById("interview-job");
 const rejectedJobElement = document.getElementById("rejected-job");
 const jobField = document.getElementById("job-field");
-const mainContent = document.getElementById('main-content') ;
-const noAvailableJobCardForRejected = document.getElementById('no-available-job-card-for-rejected')
+const mainContent = document.getElementById("main-content");
 
-const interviewJobHeading = document.getElementById('interview-job-heading')
-const rejectedJobHeading = document.getElementById('rejected-job-heading')
-
+const interviewJobHeading = document.getElementById("interview-job-heading");
+const rejectedJobHeading = document.getElementById("rejected-job-heading");
 
 let interviewJob = [];
 let rejectedJob = [];
 
-
-// all section
+// section
 const interviewSection = document.getElementById("interview-section");
 const rejectedSection = document.getElementById("rejected-section");
 const allJobSection = document.getElementById("all-job-section");
-
 
 // all toggle button
 const allBtn = document.getElementById("all-btn");
@@ -31,23 +28,17 @@ function calculate() {
   totalJobElement[1].innerText = totalJob;
   interviewJobElement.innerText = interviewJob.length;
   rejectedJobElement.innerText = rejectedJob.length;
-  interviewJobHeading.innerText = interviewJob.length + ' of';
-  rejectedJobHeading.innerText = rejectedJob.length + ' of';
-  
+  interviewJobHeading.innerText = interviewJob.length + " of";
+  rejectedJobHeading.innerText = rejectedJob.length + " of";
 }
 calculate();
-
-
-
-
 
 // section hiding function
 function toggleBtn(id, section, jobHeading) {
 
-  
-  // job count remove in the heading 
-  interviewJobHeading.classList.add('hidden');
-  rejectedJobHeading.classList.add('hidden');
+  // job count remove in the heading
+  interviewJobHeading.classList.add("hidden");
+  rejectedJobHeading.classList.add("hidden");
 
   // first removing all active- btn
   allBtn.classList.remove("btn-active");
@@ -62,28 +53,23 @@ function toggleBtn(id, section, jobHeading) {
   // third declare the selective button
   const selectedBtn = document.getElementById(id);
   selectedBtn.classList.add("btn-active");
-  
 
   // finally removing 'hidden' from selective section
   const selectedSection = document.getElementById(section);
   selectedSection.classList.remove("hidden");
 
   // job count showing in the  heading
-if(jobHeading){
-  const selectiveJobNumber = document.getElementById(jobHeading) ;
-  selectiveJobNumber.classList.remove('hidden') ;
+  if (jobHeading) {
+    const selectiveJobNumber = document.getElementById(jobHeading);
+    selectiveJobNumber.classList.remove("hidden");
+  }
 }
-// calculate();
-}
-// toggleBtn();
-
-
-
 
 
 
 // interview button activities
 mainContent.addEventListener("click", function (event) {
+
   if (event.target.classList.contains("interview-btn")) {
 
     // keeping every element from job-card in a variable
@@ -95,6 +81,7 @@ mainContent.addEventListener("click", function (event) {
     const description = parent.querySelector(".description").innerText;
     parent.querySelector(".badge").innerText = "INTERVIEW";
 
+
     // making a object with the element
     let jobCardInfo = {
       companyName,
@@ -105,30 +92,26 @@ mainContent.addEventListener("click", function (event) {
     };
 
     // matching that same card is available or not in the interview section
-    const exists = interviewJob.find((item) => item.companyName === jobCardInfo.companyName);
+    const exists = interviewJob.find(
+      (item) => item.companyName === jobCardInfo.companyName,
+    );
 
     // checking matched card
     if (!exists) {
-      interviewJob.unshift(jobCardInfo);   
-      
+      interviewJob.unshift(jobCardInfo);
     }
-    
-      rejectedJob = rejectedJob.filter(item => item.companyName != jobCardInfo.companyName) ;
-    
-    createInterviewCard() ; 
-    createRejectedCard()
+
+    rejectedJob = rejectedJob.filter(
+      (item) => item.companyName != jobCardInfo.companyName,
+    );
+
+    createInterviewCard();
+    createRejectedCard();
     calculate();
-
-  
-  }
-
-
-
-
+  } 
 
 
   else if (event.target.classList.contains("rejected-btn")) {
-
     // keeping every element from job-card in a variable
     const parent = event.target.parentElement.parentElement;
     const companyName = parent.querySelector(".company-name").innerText;
@@ -148,71 +131,68 @@ mainContent.addEventListener("click", function (event) {
     };
 
     // matching that same card is available or not in the interview section
-    const exists = rejectedJob.find((item) => item.companyName === jobCardInfo.companyName);
+    const exists = rejectedJob.find(
+      (item) => item.companyName === jobCardInfo.companyName,
+    );
 
-  
     if (!exists) {
-      rejectedJob.unshift(jobCardInfo); 
- 
-   
+      rejectedJob.unshift(jobCardInfo);
     }
-          
-    interviewJob = interviewJob.filter(item => item.companyName !== jobCardInfo.companyName) ;
-    
-      createRejectedCard() ;
-      createInterviewCard() ;
-      calculate() ;
 
-  
+    interviewJob = interviewJob.filter(
+      (item) => item.companyName !== jobCardInfo.companyName,
+    );
 
+    createRejectedCard();
+    createInterviewCard();
+    calculate();
   }
 
-// deleting job 
-else if (event.target.classList.contains("delete-btn")) {
-
-  const cardInfo = event.target.parentElement.parentElement;
-  const companyName = cardInfo.querySelector(".company-name").innerText;
-
-// deleting from interview section
-  interviewJob = interviewJob.filter(item => item.companyName !== companyName); 
-
-  //deleting form rejected section
-  rejectedJob = rejectedJob.filter(item => item.companyName !== companyName);
-
-  cardInfo.remove();
-
-  createInterviewCard();
-  createRejectedCard();
-  calculate();
-}
 
 
+  // deleting job
+  else if (event.target.classList.contains("delete-btn")) {
+    const cardInfo = event.target.parentElement.parentElement;
+    const companyName = cardInfo.querySelector(".company-name").innerText;
+
+    // deleting from interview section
+    interviewJob = interviewJob.filter(
+      (item) => item.companyName !== companyName,
+    );
+
+    //deleting form rejected section
+    rejectedJob = rejectedJob.filter(
+      (item) => item.companyName !== companyName,
+    );
+
+    cardInfo.remove();
+
+    createInterviewCard();
+    createRejectedCard();
+    calculate();
+  }
 });
 
 
 
-
-
-
+// creating Interview card
 function createInterviewCard() {
-
   interviewSection.innerHTML = "";
 
-   if (interviewJob.length === 0) {
+  // default interview section element 
+  if (interviewJob.length === 0) {
     interviewSection.innerHTML = `
       <div id="no-available-job-card-for-rejected" class="bg-base-100 card-xs mt-4 shadow-md mb-5 flex flex-col justify-center items-center p-6">
             <img src="./jobs.png" alt="document-logo">
             <h3 class="font-semibold text-[18px]">No job available</h3>
             <p>Check back soon for new job opportunities</p>
-
-        </div>
+      </div>
     `;
     return;
   }
 
-  for (const everyInterviewCard of interviewJob) {
 
-  
+  for (const everyInterviewCard of interviewJob) {
     let div = document.createElement("div");
     div.innerHTML = `
             <div class="mobile-first-corp card-body mb-4 shadow-sm relative">
@@ -228,37 +208,33 @@ function createInterviewCard() {
                 <button class=" rejected-btn btn btn-outline btn-secondary ml-4">REJECTED</button>
                 <button class=" delete-btn btn btn-soft btn-warning text-black absolute top-6 right-4"> <i class="delete-btn fa-regular fa-trash-can pointer-events-none"></i> </button>
             </div>
-        </div
-        
+        </div       
         `;
-    
+
     interviewSection.appendChild(div);
   }
-
-
 }
 
 
 
-
+// creating rejected card 
 function createRejectedCard() {
   rejectedSection.innerHTML = "";
 
+  // default rejected section element 
   if (rejectedJob.length === 0) {
     rejectedSection.innerHTML = `
       <div id="no-available-job-card-for-rejected" class="bg-base-100 card-xs mt-4 shadow-md mb-5 flex flex-col justify-center items-center p-6">
             <img src="./jobs.png" alt="document-logo">
             <h3 class="font-semibold text-[18px]">No job available</h3>
             <p>Check back soon for new job opportunities</p>
-
         </div>
     `;
     return;
   }
 
-  for (const everyRejectedCard of rejectedJob) {
 
-    
+  for (const everyRejectedCard of rejectedJob) {
     let div = document.createElement("div");
     div.innerHTML = `
             <div class="mobile-first-corp card-body mb-4 shadow-sm relative">
@@ -274,10 +250,14 @@ function createRejectedCard() {
                 <button class=" rejected-btn btn btn-outline btn-secondary ml-4">REJECTED</button>
                 <button class=" delete-btn btn btn-soft btn-warning text-black absolute top-6 right-4"> <i class="delete-btn fa-regular fa-trash-can pointer-events-none"></i> </button>
             </div>
-        </div
-        
+        </div       
         `;
-    
+
     rejectedSection.appendChild(div);
   }
 }
+
+
+
+
+//   ------------Peyaraful --------------
