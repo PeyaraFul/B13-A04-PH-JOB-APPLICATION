@@ -13,59 +13,141 @@
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- font awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
      <link rel="stylesheet" href="index.css">
     <title>PH-Job-Tracker</title>
 </head>
 <body>
 
-    <header class="p-4">
-        <h1 class="font-bold text-2xl my-4"> JOB APPLICATION TRACKER</h1>
+    <header class="px-3 sticky bg-green-100 top-0 z-10">
+        <h1 class="font-bold text-2xl"> JOB APPLICATION TRACKER</h1>
         <div class="job-dashbord grid grid-cols-3 grid-rows-1 gap-5 p-3">
-            <div class="card bg-base-100 card-xs shadow-sm">
+            <div class="card bg-base-100 card-xs shadow-sm p-4">        
+                <h3>Total</h3>
+                <p class="total-jobs font-bold"> </p>
+            </div>
+            <div class="card bg-base-100 card-xs shadow-sm p-4">
+                <h3>Interview</h3>
+                <p id="interview-job" class="text-green-500 font-bold">0</p>      
+            </div>
+            <div class="card bg-base-100 card-xs shadow-sm p-4">
+                <h3>Rejected</h3>
+                <p id="rejected-job" class="text-red-500 font-bold">0</p>
              
-             <h3>Total</h3>
-              <p class=" font-bold">8</p>
-        </div>
-        <div class="card bg-base-100 card-xs shadow-sm p-4">
-            <h3>Interview</h3>
-             <p class="text-green-500 font-bold">0</p>
-            
-        </div>
-        <div class="card bg-base-100 card-xs shadow-sm p-4">
-            <h3>Rejected</h3>
-              <p class="text-red-500 font-bold">0</p>
-             
-        </div>
-        </div>
-        
-        <br>
-    </header>
-
-<section class="available-job mt-5 p-4">
-    <h2 class="mb-3 font-bold  text-xl">Available Job</h2>
-    
-    
-        <div class="bg-base-100 card-xs shadow-lg p-3">
-            <button class="btn btn-soft btn-primary btn-active">All</button>
-            <button class="btn btn-soft btn-primary">Interview</button>
-            <button class="btn btn-soft btn-primary">Rejected</button>
-        <div class="card-body my-3">
-            <h2 class="card-title text-[16px]">Mobile First Corp</h2>
-            <p class="text-neutral-500 text-[14px]"> react Native Developer</p>
-
-           <div class="badge badge-soft badge-md badge-primary">NOT APPLIED</div>
-
-            <p class="text-neutral-500"> react Native Developer</p>
-            <div class="">
-                <p class="mb-2"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, tempora?</p>
-            
-            <button class="btn btn-outline btn-success">INTERVIEW</button>
-            <button class="btn btn-outline btn-secondary ml-4">REJECTED</button>
-            
             </div>
         </div>
+        
+        <div class="">
+            <h2 class="font-bold mt-2 flex  justify-between items-center bg-gray-100 text-xl">Available Job <span class="text-sm px-4 font-normal"><span class="total-jobs">  </span> jobs </span> </h2>
+            
+            <!-- toggle button  -->
+            <div id="toggle-btn" class="bg-base-100 rounded-sm card-xs shadow-md p-3">
+                <button  id="all-btn" onclick="toggleBtn('all-btn', 'available-job-section')" class="toggle-btn btn btn-soft btn-primary btn-active">All</button>
+                <button  id="interview-btn" onclick="toggleBtn('interview-btn','interview-section')" class=" toggle-btn interview btn btn-soft btn-primary">Interview</button>
+                <button  id="rejected-btn" onclick="toggleBtn('rejected-btn', 'rejected-section')" class="toggle-btn btn btn-soft btn-primary">Rejected</button>
+             </div>
         </div>
+    
+    </header>
+
+
+
+
+    
+     
+
+<!-- available job section  -->
+<section id="available-job-section" class="available-job-section  p-4">
+
+    <div id="job-field">
+        <div class="mobile-first-corp card-body mb-4 shadow-sm">
+            <h2 class="company-name card-title text-[16px]">phone First Corp</h2>
+            <p class="job-position text-neutral-500 text-[14px]"> react Native Developer</p>
+
+            <div class="badge badge-soft badge-md font-semibold badge-primary">NOT APPLIED</div>
+                <p  class="salary text-neutral-500"> react Native Developer</p>
+                <p  class="description mb-2"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, tempora?</p>
+            <div>
+
+                <button class=" interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                <button class=" rejected-btn btn btn-outline btn-secondary ml-4">REJECTED</button>
+            </div>
+        </div>
+        <div class="mobile-first-corp card-body mb-4 shadow-sm">
+            <h2 class="company-name card-title text-[16px]">phoe First Corp</h2>
+            <p class="job-position text-neutral-500 text-[14px]"> react Native Developer</p>
+
+            <div class="badge badge-soft badge-md font-semibold badge-primary">NOT APPLIED</div>
+                <p  class="salary text-neutral-500"> react Native Developer</p>
+                <p  class="description mb-2"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, tempora?</p>
+            <div>
+
+                <button class=" interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                <button class=" rejected-btn btn btn-outline btn-secondary ml-4">REJECTED</button>
+            </div>
+        </div>
+        <div class="mobile-first-corp card-body mb-4 shadow-sm">
+            <h2 class="company-name card-title text-[16px]">pone First Corp</h2>
+            <p class="job-position text-neutral-500 text-[14px]"> react Native Developer</p>
+
+            <div class="badge badge-soft badge-md font-semibold badge-primary">NOT APPLIED</div>
+                <p  class="salary text-neutral-500"> react Native Developer</p>
+                <p  class="description mb-2"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nisi, tempora?</p>
+            <div>
+
+                <button class=" interview-btn btn btn-outline btn-success">INTERVIEW</button>
+                <button class=" rejected-btn btn btn-outline btn-secondary ml-4">REJECTED</button>
+            </div>
+        </div>
+
+
+       
+
+
+        
+    </div>
+        
+        
+
+
 </section>
     
+
+
+
+
+
+<!-- Interview section  -->
+ <section id="interview-section" class="hidden">
+    <div id="no-available-job-card-for-interview" class="bg-base-100 card-xs mt-4 shadow-md mb-5 flex flex-col justify-center items-center p-6">
+        <img src="./jobs.png" alt="document-logo">
+        <h3 class="font-semibold text-[18px]">No job available</h3>
+        <p>Check back soon for new job opportunities</p>
+
+    </div>    
+ </section>
+
+
+
+
+
+<!-- rejected-job section  -->
+ <section id="rejected-section" class="hidden">
+    <div id="no-available-job card-for-rejected" class="bg-base-100 card-xs mt-4 shadow-md mb-5 flex flex-col justify-center items-center p-6">
+        <img src="./jobs.png" alt="document-logo">
+        <h3 class="font-semibold text-[18px]">No job available</h3>
+        <p>Check back soon for new job opportunities</p>
+
+    </div>
+
+ </section>
+
+
+
+
+<script src="./script/index.js"></script>
+<!-- <script src="./script/index3.js"></script> -->
 </body>
 </html>
